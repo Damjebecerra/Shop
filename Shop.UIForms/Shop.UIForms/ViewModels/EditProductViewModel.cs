@@ -5,6 +5,7 @@
     using Common.Models;
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
+    using Shop.UIForms.Helpers;
     using Xamarin.Forms;
 
     public class EditProductViewModel : BaseViewModel
@@ -42,17 +43,21 @@
         {
             if (string.IsNullOrEmpty(this.Product.Name))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", 
-                    "You must enter a product name.", 
-                    "Accept");
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.EnterName,
+                    Languages.Accept
+                    );
                 return;
             }
 
             if (this.Product.Price <= 0)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", 
-                    "The price must be a number greather than zero.", 
-                    "Accept");
+                await Application.Current.MainPage.DisplayAlert(
+                    Languages.Error,
+                    Languages.EnterPrice,
+                    Languages.Accept
+                    );
                 return;
             }
 
@@ -87,10 +92,12 @@
 
         private async void Delete()
         {
-            var confirm = await Application.Current.MainPage.DisplayAlert("Confirm", 
-                "Are you sure to delete the product?", 
-                "Yes", 
-                "No");
+            var confirm = await Application.Current.MainPage.DisplayAlert(
+                Languages.Confirm,
+                Languages.DeleteProduct_,
+                Languages.Yes,
+                Languages.No
+                );
             if (!confirm)
             {
                 return;

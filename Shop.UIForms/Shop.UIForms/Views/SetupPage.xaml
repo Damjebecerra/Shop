@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="Shop.UIForms.Views.SetupPage"
-             Title="Setup">
+             Title="{i18n:Translate Setup}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Yo vere profe un 5 :D"
+            <Label 
+                HorizontalTextAlignment="Center"
+                Text="Este proyecto fue realizado en base a las tutorias vistas en seminario, se utilizo
+                Xamarin Forms con programación en lenguaje c# y Xaml para el adecuado diseño de la interface y tambien
+                un patron de arquitectura MVVM"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

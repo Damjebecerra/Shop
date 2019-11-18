@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              x:Class="Shop.UIForms.Views.EditProductPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Edit Product">
+             Title="{i18n:Translate EditProduct}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding EditProduct}">
@@ -16,7 +17,7 @@
                 <Label
                     FontSize="Micro"
                     HorizontalOptions="Center"
-                    Text="Tap the image to change it...">
+                    Text="{i18n:Translate TapImage}">
                 </Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -26,26 +27,26 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Name"
+                        Text="{i18n:Translate Name}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="0"
-                        Placeholder="Product name..."
+                        Placeholder="{i18n:Translate ProductName}"
                         Text="{Binding Product.Name}">
                     </Entry>
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="Price"
+                        Text="{i18n:Translate Price}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="1"
                         Keyboard="Numeric"
-                        Placeholder="Product price..."
+                        Placeholder="{i18n:Translate ProductPrice}"
                         Text="{Binding Product.Price}">
                     </Entry>
                 </Grid>
@@ -62,7 +63,7 @@
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Save"
+                        Text="{i18n:Translate Save}"
                         TextColor="White">
                     </Button>
                     <Button
@@ -72,7 +73,7 @@
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled}"
-                        Text="Delete"
+                        Text="{i18n:Translate Delete}"
                         TextColor="White">
                     </Button>
                 </StackLayout>

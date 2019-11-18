@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              x:Class="Shop.UIForms.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Products">
+             Title="{i18n:Translate Products}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_action_add_circle" Command="{Binding AddProductCommand}"/>
     </ContentPage.ToolbarItems>
@@ -12,6 +13,7 @@
             Padding="8"
             BindingContext="{Binding Products}">
             <ListView   
+                BackgroundColor="White"
                 IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Products}">
@@ -42,7 +44,11 @@
                                     	TextColor="Black">
                                     </Label>
                                     <Label
-                                    	Text="{Binding Price, StringFormat='{0:C2}'}"
+                                    	Text="{Binding Price, StringFormat='Price: {0:N2} $'}"
+                                    	TextColor="Navy">
+                                    </Label>
+                                    <Label
+                                    	Text="{Binding Stock, StringFormat='Stock: {0:N2}'}"
                                     	TextColor="Black">
                                     </Label>
                                 </StackLayout>

@@ -1,6 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json;
+using Shop.Common.Helpers;
 using Shop.Common.Models;
 using Shop.Common.Services;
+using Shop.UIForms.Helpers;
 using Shop.UIForms.Views;
 using System;
 using System.Windows.Input;
@@ -10,9 +13,11 @@ namespace Shop.UIForms.ViewModels
 {
     class LoginViewModel : BaseViewModel
     {
+        private readonly ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
-        private readonly ApiService apiService;
+
+        public bool IsRemember { get; set; }
 
         public bool IsRunning
         {
@@ -37,9 +42,10 @@ namespace Shop.UIForms.ViewModels
         {
             this.apiService = new ApiService();
             this.IsEnabled = true;
-            this.Email = "damjebecerra@gmail.com";
-            this.Password = "123456";
+            this.Email = "";
+            this.Password = "";
             this.IsEnabled = true;
+            this.IsRemember = true;
         }
 
 
@@ -48,18 +54,18 @@ namespace Shop.UIForms.ViewModels
             if (string.IsNullOrEmpty(this.Email))
                 {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an email",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EmailError,
+                    Languages.Accept);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an Password",
-                    "Accept");
+                    Languages.Error,
+                    Languages.PasswordError,
+                    Languages.Accept);
                 return;
             }
 
@@ -84,9 +90,10 @@ namespace Shop.UIForms.ViewModels
 
             if (!response.IsSuccess)
             {
-                await Application.Current.MainPage.DisplayAlert("Error",
-                    "Email or password incorrect.",
-                    "Accept");
+                await Application.Current.MainPage.DisplayAlert(
+                   Languages.Error,
+                    Languages.LoginError,
+                    Languages.Accept);
                 return;
             }
 
@@ -96,6 +103,12 @@ namespace Shop.UIForms.ViewModels
             mainViewModel.UserPassword = this.Password;
             mainViewModel.Token = token;
             mainViewModel.Products = new ProductsViewModel();
+
+            Settings.IsRemember = this.IsRemember;
+            Settings.UserEmail = this.Email;
+            Settings.UserPassword = this.Password;
+            Settings.Token = JsonConvert.SerializeObject(token);
+
             Application.Current.MainPage = new MasterPage();
 
         }

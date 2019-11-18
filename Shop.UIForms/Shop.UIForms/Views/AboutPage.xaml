@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              mc:Ignorable="d"
              x:Class="Shop.UIForms.Views.AboutPage"
-             Title="About">
+             Title="{i18n:Translate About}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Proyecto Realizado por Jeisson Becerra y Sebastian Muños"
+            <Label 
+                HorizontalTextAlignment="Center"
+                Text="Proyecto Realizado por Jeisson Becerra y Sebastian Muños"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

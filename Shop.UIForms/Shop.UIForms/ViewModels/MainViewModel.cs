@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Shop.Common.Models;
+using Shop.UIForms.Helpers;
 using Shop.UIForms.Views;
 using System;
 using System.Collections.Generic;
@@ -53,21 +54,21 @@ namespace Shop.UIForms.ViewModels
         {
             Icon = "ic_info_outline",
             PageName = "AboutPage",
-            Title = "About"
+            Title = Languages.About
         },
 
         new Menu
         {
             Icon = "ic_phonelink_setup",
             PageName = "SetupPage",
-            Title = "Setup"
+            Title = Languages.Setup
         },
 
         new Menu
         {
             Icon = "ic_transit_enterexit",
             PageName = "LoginPage",
-            Title = "Close session"
+            Title = Languages.CloseSession
         }
     };
 
